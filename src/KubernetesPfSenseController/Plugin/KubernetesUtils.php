@@ -204,14 +204,11 @@ class KubernetesUtils
      */
     public static function getIngressIp($ingress)
     {
-        return implode(
-            ',',
-            array_map(
-                function ($lbIngress) {
-                    return $lbIngress['ip'];
-                },
-                $ingress['status']['loadBalancer']['ingress'];
-            )
+        return array_map(
+            function ($lbIngress) {
+                return $lbIngress['ip'];
+            },
+            $ingress['status']['loadBalancer']['ingress']
         );
     }
 
